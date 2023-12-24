@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+          crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css"
+          integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ"
+          crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
+            integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body onload="thrityChart()">
+    <div th:insert="~{layouts/commonHeader :: header}"></div>
+    <div fragment="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div th:insert="~{layouts/commonSidebar :: sidebar}"></div>
+                <div class ="container">
+                    <h1 style="text-align: center"> Anxiety Level over the past 30 days</h1>
+                    <div class="chart container">
+                        <canvas id="myAnxietyPieChart" class="chart" height="200" width="200"></canvas>
+                    </div>
+                    <h1  style="text-align: center"> Depression Level over the past 30 days</h1>
+                    <div class="chart container">
+                        <canvas id="myDepressionLineChart" class="chart" height="200" width="200"></canvas>
+                    </div>
+                    <h1 style="text-align: center"> Energy Level over the past 30 days</h1>
+                    <div class="chart container">
+                        <canvas id="myEnergyLevelLineGraph" class="chart" height="200" width="200"></canvas>
+                    </div>
+                    <h1  style="text-align: center"> Craving Level over the past 30 days</h1>
+                    <div class="chart container">
+                        <canvas id="myCravingLevelLineGraph" class="chart" height="200" width="200"></canvas>
+                    </div>
+                    <h1 style="text-align: center">Self Harm Level over the past 30 days</h1>
+                    <div class="chart container">
+                        <canvas id="mySelfHarmLevelLineGraph" class="chart" height="200" width="200"></canvas>
+                    </div>
+                    <h1 style="text-align: center"> Impulse Level over the past 30 days</h1>
+                    <div class="chart container">
+                        <canvas id="myImpulseLevelLineGraph" class="chart" height="200" width="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:insert="~{layouts/commonfooter :: footer}"></div>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        var weeklyChartLabels = /*[[${labels}]]*/ [];
+        var anxietyChartData = /*[[${anxietyData}]]*/ [];
+        var depressionChartData = /*[[${depressionData}]]*/ [];
+        var energyLevelChartData = /*[[${energyLevelData}]]*/ [];
+        var cravingLevelChartData = /*[[${cravingLevelData}]]*/ [];
+        var selfHarmChartData= /*[[${selfHarmLevelData}]]*/ [];
+        var impulseLevelChartData= /*[[${impulseLevelData}]]*/ [];
+
+        /*]]>*/
+    </script>
+    <script src="/charts.js"></script>
+</body>
+</html>

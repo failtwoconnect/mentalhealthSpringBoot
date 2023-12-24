@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+    <div th:insert="~{layouts/commonHeader :: header}"></div>
+    <div class="container" fragment="content">
+        <form action="#" th:action="@{/therapy/save}" th:object="${therapyNumber}" method="post">
+            <label th:text="${therapyNumber.client.firstName} + ' ' + ${therapyNumber.client.lastName}"></label>
+            <br><br>
+            <input type="hidden" th:value="${therapyNumber.client.clientID}" name="clientID">
+            <input type="hidden" th:field="*{numberId}"/>
+            <label class="form-control">Anxiety Score</label>
+            <input type="text" th:field="*{anxietyScore}" class="form-control mb-4 w-25" placeholder="Anxiety Number 0-7">
+            <label class="form-control">Depression Score</label>
+            <input type="text" th:field="*{depressionScore}" class="form-control mb-4 w-25" placeholder="Depression Number 0-7">
+            <label class="form-control">Self Harm Score</label>
+            <input type="text" th:field="*{selfHarmScore}" class="form-control mb-4 w-25" placeholder="Self Harm Number 0-7">
+            <label class="form-control">Energy Level Score</label>
+            <input type="text" th:field="*{energyLevelScore}" class="form-control mb-4 w-25" placeholder="Energy Level Number  0-7">
+            <label class="form-control">Craving Level Score</label>
+            <input type="text" th:field="*{cravingScore}" class="form-control mb-4 w-25" placeholder="Craving Level Number  0-7">
+            <label class="form-control">Impulse Level Score</label>
+            <input type="text" th:field="*{impulseScore}" class="form-control mb-4 w-25" placeholder="Impulse Level Number  0-7">
+            <label><span>Physical Harm</span></label>
+            <input type="checkbox" th:field="*{physicalSelfHarm}">
+            <br><br>
+            <input type="text" th:field="*{datetime}">
+            <br><br>
+            <button type="submit" class="btn btn-info col-2">Submit</button>
+
+        </form>
+
+        <a th:href="@{/therapy/numbers(id=${clientID})}">Back to client list</a>
+    </div>
+    <div th:insert="~{layouts/commonFooter :: footer}"></div>
+
+
+</body>
+</html>
